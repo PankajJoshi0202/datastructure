@@ -1,0 +1,20 @@
+class Solution {
+    public int countPrimeSetBits(int left, int right) {
+        int count = 0;
+
+        // Bitmask where prime indices are set
+        int primeMask = 665772;  
+        // Binary representation has bits set at:
+        // 2,3,5,7,11,13,17,19
+
+        for (int i = left; i <= right; i++) {
+            int setBits = Integer.bitCount(i);
+            
+            if ((primeMask & (1 << setBits)) != 0) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
